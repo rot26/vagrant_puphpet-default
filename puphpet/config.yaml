@@ -3,7 +3,7 @@ vagrantfile-local:
     vm:
         box: puphpet/ubuntu1204-x64
         box_url: puphpet/ubuntu1204-x64
-        hostname: null
+        hostname: 'vagrant.dev'
         memory: '4096'
         chosen_provider: virtualbox
         network:
