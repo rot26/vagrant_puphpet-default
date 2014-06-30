@@ -23,6 +23,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "private_network", ip: "#{data['vm']['network']['private_network']}"
   end
 
+###@CHECK
+  config.vm.hostname                    = "#{data['vm']['hostname']}"
+
+  config.hostmanager.enabled            = true
+  config.hostmanager.manage_host        = true
+  config.hostmanager.ignore_private_ip  = false
+  config.hostmanager.include_offline    = true
+
   data['vm']['network']['forwarded_port'].each do |i, port|
     if port['guest'] != '' && port['host'] != ''
       config.vm.network :forwarded_port, guest: port['guest'].to_i, host: port['host'].to_i
@@ -117,6 +125,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ssh_username = !data['ssh']['username'].nil? ? data['ssh']['username'] : "vagrant"
+
+  # "Provision" with hostmanager
+  config.vm.provision :hostmanager
 
   config.vm.provision "shell" do |s|
     s.path = "puphpet/shell/initial-setup.sh"
