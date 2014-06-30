@@ -1,3 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# The base of this config file was created using PuPHPet <https://puphpet.com/>
+# Some info on how to adjust this file: http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/
+
 require 'yaml'
 
 dir = File.dirname(File.expand_path(__FILE__))
@@ -5,7 +10,8 @@ dir = File.dirname(File.expand_path(__FILE__))
 configValues = YAML.load_file("#{dir}/puphpet/config.yaml")
 data = configValues['vagrantfile-local']
 
-Vagrant.configure("2") do |config|
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "#{data['vm']['box']}"
   config.vm.box_url = "#{data['vm']['box_url']}"
 
