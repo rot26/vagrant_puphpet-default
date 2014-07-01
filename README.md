@@ -54,16 +54,34 @@ Everything else is included in the puppet and vagrant configuration files.
 
 _Examples of common tasks_
 
-### Logging in to the vagrant machine
-> e.g.
-> vagrant up
-> vagrant ssh
+### Logging into the vagrant machine
+
+```shell
+vagrant up
+vagrant ssh
+```
 
 ### Accessing the webbrowser
-> e.g.
-> http://vagrant.dev/	(requires permission to change host machine's _hosts_ file
-> Alternatively access via ip address
-> 192.168.42.10
+
+_Preferred Method: vagrant HostManager_
+
+(requires permission to change host machine's _hosts_ file)
+
+```http
+http://vagrant.dev/	
+```
+
+_Alternatively access via ip address_
+
+```http
+http://192.168.42.10:80
+```
+
+OR
+
+```http
+http://localhost:8080/
+```
 
 ## Contributing changes
 
