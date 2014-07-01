@@ -82,5 +82,5 @@ I use [Atlassian's SourceTree workflow](https://www.atlassian.com/git/workflows#
 
 ## License
 
-Inherit from parents.
+GPLv2
 
