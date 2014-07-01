@@ -1,6 +1,8 @@
-# _Vagrant Lamp Setup (DEV ONLY)_
+# Vagrant + PuPHPet (Development LAMP VM)
 
-_Description: This is my default setup for developing most LAMP stack web applications.  It uses Vagrant, PuPHPet and Puppet.
+## Description
+
+This is my default setup for developing most LAMP stack web applications.  It uses Vagrant, PuPHPet and Puppet.
 
 ## Project Setup
 
@@ -8,14 +10,13 @@ _How do I, as a developer, start working on the project?_
 
 1. _What dependencies does it have (where are they expressed) and how do I install them?_
 	1. [Vagrant](https://www.vagrantup.com/) (>=v1.6)
-	- Please download the proper package for your operating system and architecture.
-	- [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html) 
+	- Please download the proper package for your operating system and architecture.  [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html) 
 2. _How can I see the project working before I change anything?_
 	1. After installing run this in your command terminal
 	```shell
 	vagrant up
 	```
-	- A tutorial for vagrant is available on the [Vagrant website](https://vagrantup.com/).
+	- A tutorial for vagrant is available on the [Vagrant website](https://docs.vagrantup.com/v2/getting-started/index.html).
 
 ## Testing
 
@@ -36,7 +37,7 @@ There are currently no tests for the project.  Please feel free to contribute.
 
 1. Clone this git repository
 ```shell
-git clone...
+git clone git@github.com:rot26/vagrant_puphpet-default.git
 ```
 2. After installing Vagrant from [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html) Run the following command in your terminal
 ```shell
@@ -66,7 +67,11 @@ _Examples of common tasks_
 
 ## Contributing changes
 
-- _Internal git workflow_
+### Pull Requests
+
+Please submit your changes via Pull Requests
+
+### Internal git workflow
 
 I use [Atlassian's SourceTree workflow](https://www.atlassian.com/git/workflows#!workflow-gitflow) with the following branches:
 
