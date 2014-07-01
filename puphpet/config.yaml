@@ -1,8 +1,8 @@
 ---
 vagrantfile-local:
     vm:
-        box: puphpet/ubuntu1204-x64
-        box_url: puphpet/ubuntu1204-x64
+        box: puphpet/ubuntu1404-x64
+        box_url: puphpet/ubuntu1404-x64
         hostname: 'vagrant.dev'
         memory: '4096'
         cpus: '2'
@@ -165,8 +165,6 @@ php:
             - tidy
             - pecl_http
             - intl
-            - perl
-            - python
             - markdown
             - json
     ini:
