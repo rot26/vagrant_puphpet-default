@@ -1,3 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# The base of this config file was created using PuPHPet <https://puphpet.com/>
+# Some info on how to adjust this file: http://garylarizza.com/blog/2013/02/01/repeatable-puppet-development-with-vagrant/
+
 require 'yaml'
 
 dir = File.dirname(File.expand_path(__FILE__))
@@ -5,7 +10,8 @@ dir = File.dirname(File.expand_path(__FILE__))
 configValues = YAML.load_file("#{dir}/puphpet/config.yaml")
 data = configValues['vagrantfile-local']
 
-Vagrant.configure("2") do |config|
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "#{data['vm']['box']}"
   config.vm.box_url = "#{data['vm']['box_url']}"
 
@@ -16,6 +22,14 @@ Vagrant.configure("2") do |config|
   if data['vm']['network']['private_network'].to_s != ''
     config.vm.network "private_network", ip: "#{data['vm']['network']['private_network']}"
   end
+
+###@CHECK
+  config.vm.hostname                    = "#{data['vm']['hostname']}"
+
+  config.hostmanager.enabled            = true
+  config.hostmanager.manage_host        = true
+  config.hostmanager.ignore_private_ip  = false
+  config.hostmanager.include_offline    = true
 
   data['vm']['network']['forwarded_port'].each do |i, port|
     if port['guest'] != '' && port['host'] != ''
@@ -62,6 +76,7 @@ Vagrant.configure("2") do |config|
       end
 
       virtualbox.customize ["modifyvm", :id, "--memory", "#{data['vm']['memory']}"]
+      virtualbox.customize ["modifyvm", :id, "--cpus", "#{data['vm']['cpus']}"]
 
       if data['vm']['hostname'].to_s.strip.length != 0
         virtualbox.customize ["modifyvm", :id, "--name", config.vm.hostname]
@@ -110,6 +125,9 @@ Vagrant.configure("2") do |config|
   end
 
   ssh_username = !data['ssh']['username'].nil? ? data['ssh']['username'] : "vagrant"
+
+  # "Provision" with hostmanager
+  config.vm.provision :hostmanager
 
   config.vm.provision "shell" do |s|
     s.path = "puphpet/shell/initial-setup.sh"
