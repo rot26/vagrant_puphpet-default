@@ -1,1 +1,7 @@
-puphpet/files/dot/ssh
+id_rsa
+id_rsa.ppk
+id_rsa.pub
+insecure_private_key
+root_id_rsa
+root_id_rsa.ppk
+root_id_rsa.pub
