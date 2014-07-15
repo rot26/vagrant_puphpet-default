@@ -75,6 +75,9 @@ server:
         - shtool
         - pkg-php-tools
         - dh-php5
+        - apache2-mpm-event
+        - libapache2-mod-fastcgi
+        - php5-fpm
     dot_files:
         -
             bash_aliases: null
@@ -104,6 +107,9 @@ apache:
         - headers
         - php
         - rewrite
+        - actions
+        - alias
+        - fastcgi
     vhosts:
         nTqEcGz5vPAA:
             servername: vagrant.dev
@@ -169,7 +175,9 @@ php:
             - json
     ini:
         display_errors: On
+        display_startup_errors: On
         error_reporting: '-1'
+        log_errors: On
         session.save_path: /var/lib/php/session
     timezone: America/Denver
 xdebug:
